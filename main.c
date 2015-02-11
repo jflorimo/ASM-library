@@ -1,6 +1,7 @@
 #include <stdio.h>
 
-void ft_puts(char *s);
+
+int ft_puts(char *s);
 
 void check_puts(char *s);
 
@@ -12,6 +13,6 @@ void check_puts(char *s)
 
 int main()
 {
-	check_puts("mampppth !");
+	check_puts("great succes !");
 	return 0;
 }
