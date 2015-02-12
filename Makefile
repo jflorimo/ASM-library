@@ -5,6 +5,7 @@ CFLAGS = -Wl,-no_pie
 NAME = libftasm.com
 
 ASM =	ft_puts.s \
+		ft_isdigit.s \
 
 SRCS =	main.c \
 
