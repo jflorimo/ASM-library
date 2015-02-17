@@ -6,6 +6,7 @@ NAME = libftasm.com
 
 ASM =	ft_puts.s \
 		ft_isdigit.s \
+		ft_isalpha.s \
 
 SRCS =	main.c \
 
