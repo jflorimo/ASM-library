@@ -10,6 +10,10 @@ ASM =	ft_puts.s \
 		ft_isalnum.s \
 		ft_isascii.s \
 		ft_isprint.s \
+		ft_bzero.s \
+		ft_strcat.s \
+		ft_tolower.s \
+		ft_toupper.s \
 
 SRCS =	main.c \
 
