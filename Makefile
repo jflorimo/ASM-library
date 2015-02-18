@@ -14,6 +14,10 @@ ASM =	ft_puts.s \
 		ft_strcat.s \
 		ft_tolower.s \
 		ft_toupper.s \
+		ft_strlen.s \
+		ft_memset.s \
+		ft_memcpy.s \
+		ft_strdup.s \
 
 SRCS =	main.c \
 

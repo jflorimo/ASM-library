@@ -7,7 +7,7 @@
 
 # define	MIN				( -4200 )
 # define	MAX				( 5000 )
-# define	STR_MAX_SIZE	( 10 )
+# define	STR_MAX_SIZE	( 10000 )
 # define	random(min, max)( ( rand() % ( max - min ) ) + min )
 
 static size_t	random_str( char *buff )
@@ -38,6 +38,10 @@ int ft_isprint(int);
 int	ft_tolower(int);
 int ft_toupper(int);
 char *ft_strcat(char *, const char *);
+int	ft_strlen(char *);
+char *ft_memset(char *, int, size_t);
+char *ft_memcpy(const char *, const char *, size_t);
+char *ft_strdup(char *);
 
 
 void check_puts(char *s)
@@ -72,6 +76,25 @@ void check_tolower(int i)
 void check_toupper(int i)
 {
 	printf("data: %c toupper: %d, ft_toupper: %d \n", i, toupper(i), ft_toupper(i));
+}
+void check_strlen()
+{
+	int i = 0;
+	printf( "--------\nTest ft_strlen:\n" );
+	char	str[STR_MAX_SIZE];
+	size_t	len;
+	size_t	ft_len;
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len = random_str( str );
+		if ( ( ft_len = ft_strlen( str ) ) != len )
+		{
+			printf("[%s] -> result: %d, expected result: %d\n", str, ft_len, len );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
 
 
@@ -185,6 +208,7 @@ int main()
 		}
 	}
 	printf("\033[32mOk\n\033[0m");
+
 	printf( "--------\nTest ft_strcat:\n" );
 	char	str_strcat[STR_MAX_SIZE * 2];
 	char	str_ft_strcat[STR_MAX_SIZE * 2];
@@ -214,6 +238,77 @@ int main()
 			printmem( ret_strcat, len_strcat );
 			printmem( ret_ft_strcat, len_strcat );
 			printf("result: \n%s\nexpected result: \n%s\n", ret_strcat, ret_ft_strcat );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
+	check_strlen();
+
+	printf( "--------\nTest ft_memset:\n" );
+	char	str_memset[STR_MAX_SIZE];
+	char	str_ft_memset[STR_MAX_SIZE];
+	size_t	len_memset;
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len_memset = random_str( str_memset );
+		len_memset -= random( 0, len_memset );
+		strcpy( str_ft_memset, str_memset );
+
+		ft_memset( str_ft_memset, i, len_memset );
+		memset( str_memset, i, len_memset );
+		if ( memcmp( str_ft_memset, str_memset, len_bzero ) != 0 )
+		{
+			printf("result: \n%s\nexpected result: \n%s\n", str_ft_memset, str_memset );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
+	printf( "--------\nTest ft_memcpy:\n" );
+	char	str_memcpy[STR_MAX_SIZE];
+	char	str_ft_memcpy[STR_MAX_SIZE];
+	char	str_memcpy_s2[STR_MAX_SIZE];
+	size_t	len_memcpy;
+	void	*ret_memcpy;
+	void	*ret_ft_memcpy;
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len_memcpy = random_str( str_memcpy_s2 );
+
+		ret_ft_memcpy = ft_memcpy( str_ft_memcpy, str_memcpy_s2, len_memcpy );
+		ret_memcpy = memcpy( str_memcpy, str_memcpy_s2, len_memcpy );
+		if ( memcmp( str_ft_memcpy, str_memcpy, len_memcpy ) != 0 )
+		{
+			printf("result: \n%s\nexpected result: \n%s\n", str_ft_memcpy, str_memcpy );
+			exit( 0 );
+		}
+		if ( ret_ft_memcpy != str_ft_memcpy )
+		{
+			printf("result: \n%d\nexpected result: \n%d\n", (size_t)ret_ft_memcpy, (size_t)str_ft_memcpy );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
+	printf( "--------\nTest ft_strdup:\n" );
+	char	str_strdup[STR_MAX_SIZE];
+	size_t	len_strdup;
+	char	*ret_ft_strdup;
+	char	*ret_strdup;
+
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len_strdup = random_str( str_strdup );
+
+		ret_ft_strdup = ft_strdup( str_strdup );
+		ret_strdup = strdup( str_strdup );
+		if ( memcmp( ret_ft_strdup, ret_strdup, len_strdup ) != 0 )
+		{
+			printf("result: \n%s\nexpected result: \n%s\n", ret_ft_strdup, ret_strdup );
 			exit( 0 );
 		}
 	}
