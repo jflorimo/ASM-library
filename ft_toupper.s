@@ -9,7 +9,7 @@ _ft_toupper:
 	jg _returnchar
 	jmp _returnLowerchar
 
-_returnLowerchar
+_returnLowerchar:
 	sub r10, 32
 	jmp _returnchar
 

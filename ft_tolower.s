@@ -9,7 +9,7 @@ _ft_tolower:
 	jg _returnchar
 	jmp _returnLowerchar
 
-_returnLowerchar
+_returnLowerchar:
 	add r10, 32
 	jmp _returnchar
 

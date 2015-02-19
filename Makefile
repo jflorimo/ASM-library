@@ -1,42 +1,52 @@
-CC = gcc
 
-CFLAGS = -Wl,-no_pie
+SRC_LIB =	ft_bzero.s		\
+			ft_strcat.s		\
+			ft_isalpha.s	\
+			ft_isdigit.s	\
+			ft_isalnum.s	\
+			ft_isascii.s	\
+			ft_isprint.s	\
+			ft_toupper.s	\
+			ft_tolower.s	\
+			ft_puts.s		\
+			ft_strlen.s		\
+			ft_memset.s		\
+			ft_memcpy.s		\
+			ft_strdup.s		\
+			ft_cat.s		\
 
-NAME = libftasm.com
+NAME		=	libfts.a
 
-ASM =	ft_puts.s \
-		ft_isdigit.s \
-		ft_isalpha.s \
-		ft_isalnum.s \
-		ft_isascii.s \
-		ft_isprint.s \
-		ft_bzero.s \
-		ft_strcat.s \
-		ft_tolower.s \
-		ft_toupper.s \
-		ft_strlen.s \
-		ft_memset.s \
-		ft_memcpy.s \
-		ft_strdup.s \
+CFLAGS		=	-f macho64
 
-SRCS =	main.c \
+OBJ_LIB		=	$(SRC_LIB:.s=.o)
 
-ASMO = $(ASM:.s=.o)
+all:		$(NAME)
 
-INCLUDES = ./
+$(NAME):	$(OBJ_LIB)
+	@ar -rc $(NAME) $(OBJ_LIB)
+	@ranlib $(NAME)
+	@echo ""
+	@echo "\033[33m"Compilation of libfts.a : "\033[32m"Success"\033[0m"
 
-all: $(NAME)
 
-$(NAME): $(ASMO)
-	$(CC) $(CFLAGS) -o $(NAME) $(ASMO) $(SRCS)
-
-%.o: %.s
-	nasm -f macho64 $<
+%.o:		%.s
+	@echo -n .
+	@nasm $(CFLAGS) -s $< -o $@
 
 clean:
-	rm -rf $(OBJS)
+	@echo "\033[31m"Objects of libfts.a : deleted"\033[0m"
+	@/bin/rm -f $(OBJ_LIB)
 
-fclean: clean
-	rm -rf $(NAME)
+fclean:		clean
+	@echo "\033[31m"libft.a : deleted"\033[0m"
+	@/bin/rm -f $(NAME)
 
-re: fclean all
+re:			fclean all
+
+test:		re
+	@gcc $(NAME) main.c
+	@./a.out
+
+
+.PHONY:		all re fclean clean test

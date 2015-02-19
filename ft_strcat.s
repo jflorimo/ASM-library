@@ -20,5 +20,6 @@ _startcopy:
 	jmp _startcopy
 
 _endfunction:
+	mov byte [rdi], 0
 	mov rax, r10
 	ret

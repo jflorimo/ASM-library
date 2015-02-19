@@ -2,14 +2,13 @@ section	.text
 	global _ft_isdigit
 
 _ft_isdigit:
-	mov r10, rdi
-	cmp r10, 48
-	jge _greaterthanzero
+	mov r12, rdi
+	cmp r12, 48
+	jl _retunvaluenok
 
-
-_greaterthanzero:
-	cmp r10, 57
+	cmp r12, 57
 	jg _retunvaluenok
+
 	jmp _retunvalueok
 
 _retunvalueok:

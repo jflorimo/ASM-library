@@ -4,6 +4,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+#include "libfts.h"
 
 # define	MIN				( -4200 )
 # define	MAX				( 5000 )
@@ -28,21 +29,6 @@ void printmem(char *mem, int size)
 		printf("[%c]", mem[i++]);
 	printf("\n");
 }
-
-int ft_puts(char *);
-int	ft_isdigit(int);
-int	ft_isalpha(int);
-int ft_isalnum(int);
-int ft_isascii(int);
-int ft_isprint(int);
-int	ft_tolower(int);
-int ft_toupper(int);
-char *ft_strcat(char *, const char *);
-int	ft_strlen(char *);
-char *ft_memset(char *, int, size_t);
-char *ft_memcpy(const char *, const char *, size_t);
-char *ft_strdup(char *);
-
 
 void check_puts(char *s)
 {
@@ -313,5 +299,13 @@ int main()
 		}
 	}
 	printf("\033[32mOk\n\033[0m");
+	printf( "--------\nTest ft_cat:\n" );
+	ft_cat( 4 );
+	ft_cat( 8 );
+	ft_cat( -4 );
+	// ft_cat( 0 );
+	ft_cat( open( "ft_bzero.s", O_RDONLY ) );
+	ft_cat( open( "libftasm.com", O_RDONLY ) );
+	ft_cat( open( "/etc/shadow", O_RDONLY ) );
 	return 0;
 }
