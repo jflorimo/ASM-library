@@ -14,6 +14,12 @@ SRC_LIB =	ft_bzero.s		\
 			ft_memcpy.s		\
 			ft_strdup.s		\
 			ft_cat.s		\
+			\
+			ft_islower.s \
+			ft_isupper.s \
+			ft_strcpy.s \
+			ft_strncpy.s \
+			ft_strchr.s \
 
 NAME		=	libfts.a
 

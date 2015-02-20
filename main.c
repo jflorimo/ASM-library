@@ -63,6 +63,13 @@ void check_toupper(int i)
 {
 	printf("data: %c toupper: %d, ft_toupper: %d \n", i, toupper(i), ft_toupper(i));
 }
+void check_strchr()
+{
+	printf( "--------\nTest ft_strchr:\n" );
+	printf("strchr: %s, ft_strchr: %s \n", strchr("yolo", 'y'), ft_strchr("yolo", 'y'));
+	printf("strchr: %s, ft_strchr: %s \n", strchr("abcdef", 'c'), ft_strchr("abcdef", 'c'));
+}
+
 void check_strlen()
 {
 	int i = 0;
@@ -83,10 +90,35 @@ void check_strlen()
 	printf("\033[32mOk\n\033[0m");
 }
 
+void check_isLower(int i)
+{
+	printf("data: %c islower: %d, ft_islower: %d \n", i, islower(i), ft_islower(i));
+}
+
+void check_isupper(int i)
+{
+	printf("data: %c isupper: %d, ft_isupper: %d \n", i, isupper(i), ft_isupper(i));
+}
+
 
 
 int main()
 {
+
+	puts("### ft_isupper ##");
+	check_isupper('Z');
+	check_isupper('A');
+	check_isupper('z');
+	check_isupper(64);
+	check_isupper(91);
+
+	puts("### ft_islower ##");
+	check_isLower('z');
+	check_isLower('a');
+	check_isLower('Z');
+	check_isLower(96);
+	check_isLower(123);
+
 	puts("### ft_puts ##");
 	check_puts("great succes !");
 	check_puts(0);
@@ -230,6 +262,7 @@ int main()
 	printf("\033[32mOk\n\033[0m");
 
 	check_strlen();
+	check_strchr();
 
 	printf( "--------\nTest ft_memset:\n" );
 	char	str_memset[STR_MAX_SIZE];
@@ -299,13 +332,71 @@ int main()
 		}
 	}
 	printf("\033[32mOk\n\033[0m");
+
+	printf( "--------\nTest ft_strcpy:\n" );
+	char	str_ft_strcpy[STR_MAX_SIZE];
+	char	str_strcpy[STR_MAX_SIZE];
+	char	str_strcpy_s2[STR_MAX_SIZE];
+	char	*ret_strcpy;
+	char	*ret_ft_strcpy;
+	int		len_strcpy;
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len_strcpy = random_str( str_strcpy_s2 );
+
+		ret_strcpy = strcpy( str_strcpy, str_strcpy_s2 );
+		ret_ft_strcpy = ft_strcpy( str_ft_strcpy, str_strcpy_s2 );
+
+		if ( memcmp( str_ft_strcpy, str_strcpy, len_strcpy ) != 0 )
+		{
+			printf("result: \n%s\n, expected result: \n%s\n", str_ft_strcpy, str_strcpy );
+			exit( 0 );
+		}
+		if ( memcmp( ret_strcpy, ret_ft_strcpy, len_strcpy ) != 0 )
+		{
+			printf("result: \n%s\n, expected result: \n%s\n", ret_strcpy, ret_ft_strcpy );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
+	printf( "--------\nTest ft_strncpy:\n" );
+	char	str_ft_strncpy[STR_MAX_SIZE];
+	char	str_strncpy[STR_MAX_SIZE];
+	char	str_strncpy_s2[STR_MAX_SIZE];
+	char	*ret_strncpy;
+	char	*ret_ft_strncpy;
+	int		len_strncpy;
+
+	for ( i = MIN; i < MAX; i++ )
+	{
+		len_strncpy = random_str( str_strncpy_s2 );
+		len_strncpy -= random( 0, len_strncpy );
+
+		ret_strncpy = strncpy( str_strncpy, str_strncpy_s2, len_strncpy );
+		ret_ft_strncpy = ft_strncpy( str_ft_strncpy, str_strncpy_s2, len_strncpy );
+
+		if ( strcmp( str_ft_strncpy, str_strncpy ) != 0 )
+		{
+			printf("result: \n%s\n, expected result: \n%s\n", str_ft_strncpy, str_strncpy );
+			exit( 0 );
+		}
+		if ( strcmp( ret_strncpy, ret_ft_strncpy ) != 0 )
+		{
+			printf("result: \n%s\n, expected result: \n%s\n", ret_strncpy, ret_ft_strncpy );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
 	printf( "--------\nTest ft_cat:\n" );
-	ft_cat( 4 );
-	ft_cat( 8 );
-	ft_cat( -4 );
+	// ft_cat( 4 );
+	// ft_cat( 8 );
+	// ft_cat( -4 );
 	// ft_cat( 0 );
-	ft_cat( open( "ft_bzero.s", O_RDONLY ) );
-	ft_cat( open( "libftasm.com", O_RDONLY ) );
-	ft_cat( open( "/etc/shadow", O_RDONLY ) );
+	ft_cat( open( "Makefile", O_RDONLY ) );
+	// ft_cat( open( "ft_bzero.s", O_RDONLY ) );
+	// ft_cat( open( "/etc/shadow", O_RDONLY ) );
 	return 0;
 }

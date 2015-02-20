@@ -18,5 +18,10 @@ char *ft_memcpy(const char *, const char *, size_t);
 char *ft_strdup(char *);
 void ft_cat(int);
 
+int ft_islower(int);
+int ft_isupper(int);
+char *ft_strcpy(char *, char *);
+char *ft_strncpy(char *, char *, size_t);
+char *ft_strchr(char *, int);
 
 #endif
