@@ -8,7 +8,7 @@
 
 # define	MIN				( -4200 )
 # define	MAX				( 5000 )
-# define	STR_MAX_SIZE	( 10 )
+# define	STR_MAX_SIZE	( 10000 )
 # define	random(min, max)( ( rand() % ( max - min ) ) + min )
 
 static size_t	random_str( char *buff )
