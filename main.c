@@ -8,7 +8,7 @@
 
 # define	MIN				( -4200 )
 # define	MAX				( 5000 )
-# define	STR_MAX_SIZE	( 10000 )
+# define	STR_MAX_SIZE	( 10 )
 # define	random(min, max)( ( rand() % ( max - min ) ) + min )
 
 static size_t	random_str( char *buff )
@@ -34,40 +34,120 @@ void check_puts(char *s)
 {
 	puts(s);
 	ft_puts(s);
+	printf("\033[32mOk\n\033[0m");
 }
-void check_isDigit(int i)
+void check_isDigit()
 {
-	printf("data: %c isdigit: %d, ft_isdigit: %d \n", i, isdigit(i), ft_isdigit(i));
+	int i = 0;
+	printf( "--------\nTest ft_isdigit:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_isdigit( i ) != isdigit( i ) )
+		{
+			printf("[%d] -> result: %d, expected result: %d\n", i, ft_isdigit( i ), isdigit( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
-void check_isAlpha(int i)
+
+void check_isAlpha()
 {
-	printf("data: %c isalpha: %d, ft_isalpha: %d \n", i, isalpha(i), ft_isalpha(i));
+	int i = 0;
+	printf( "--------\nTest ft_isalpha:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_isalpha( i ) != isalpha( i ) )
+		{
+			printf("[%d] -> result: %d, expected result: %d\n", i, ft_isalpha( i ), isalpha( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
-void check_isAlnum(int i)
+
+void check_isAlnum()
 {
-	printf("data: %c isalnum: %d, ft_isalnum: %d \n", i, isalnum(i), ft_isalnum(i));
+	int i = 0;
+	printf( "--------\nTest ft_isalnum:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_isalnum( i ) != isalnum( i ) )
+		{
+			printf("[%d] -> result: %d, expected result: %d\n", i, ft_isalnum( i ), isalnum( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
-void check_isAscii(int i)
+
+void check_isAscii()
 {
-	printf("data: %c isascii: %d, ft_isascii: %d \n", i, isascii(i), ft_isascii(i));
+	int i = 0;
+	printf( "--------\nTest ft_isascii:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_isascii( i ) != isascii( i ) )
+		{
+			printf("[%d] -> result: %d, expected result: %d\n", i, ft_isascii( i ), isascii( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
-void check_isprint(int i)
+
+void check_isprint()
 {
-	printf("data: %c isprint: %d, ft_isprint: %d \n", i, isprint(i), ft_isprint(i));
+	int i = 0;
+	printf( "--------\nTest ft_isprint:\n" );
+		for ( i = MIN; i < MAX; i++ )
+		{
+			if ( ft_isprint( i ) != isprint( i ) )
+			{
+				printf("[%d] -> result: %d, expected result: %d\n", i, ft_isprint( i ), isprint( i ) );
+				exit( 0 );
+			}
+		}
+		printf("\033[32mOk\n\033[0m");
 }
-void check_tolower(int i)
+
+void check_tolower()
 {
-	printf("data: %c tolower: %d, ft_tolower: %d \n", i, tolower(i), ft_tolower(i));
+	int i = 0;
+	printf( "--------\nTest ft_tolower:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_tolower( i ) != tolower( i ) )
+		{
+			printf("[%d] -> result: %c, expected result: %c\n", i, ft_tolower( i ), tolower( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
+
 }
-void check_toupper(int i)
+
+void check_toupper()
 {
-	printf("data: %c toupper: %d, ft_toupper: %d \n", i, toupper(i), ft_toupper(i));
+	int i = 0;
+	printf( "--------\nTest ft_toupper:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_toupper( i ) != toupper( i ) )
+		{
+			printf("[%d] -> result: %c, expected result: %c\n", i, ft_toupper( i ), toupper( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
+
 void check_strchr()
 {
 	printf( "--------\nTest ft_strchr:\n" );
 	printf("strchr: %s, ft_strchr: %s \n", strchr("yolo", 'y'), ft_strchr("yolo", 'y'));
 	printf("strchr: %s, ft_strchr: %s \n", strchr("abcdef", 'c'), ft_strchr("abcdef", 'c'));
+	printf("\033[32mOk\n\033[0m");
 }
 
 void check_strlen()
@@ -90,118 +170,64 @@ void check_strlen()
 	printf("\033[32mOk\n\033[0m");
 }
 
-void check_isLower(int i)
+void check_isLower()
 {
-	printf("data: %c islower: %d, ft_islower: %d \n", i, islower(i), ft_islower(i));
+	int i = 0;
+	printf( "--------\nTest ft_islower:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_islower( i ) != islower( i ) )
+		{
+			printf("[%d] -> result: %c, expected result: %c\n", i, ft_islower( i ), islower( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
 
-void check_isupper(int i)
+void check_isupper()
 {
-	printf("data: %c isupper: %d, ft_isupper: %d \n", i, isupper(i), ft_isupper(i));
+	int i = 0;
+	printf( "--------\nTest ft_isupper:\n" );
+	for ( i = MIN; i < MAX; i++ )
+	{
+		if ( ft_isupper( i ) != isupper( i ) )
+		{
+			printf("[%d] -> result: %c, expected result: %c\n", i, ft_isupper( i ), isupper( i ) );
+			exit( 0 );
+		}
+	}
+	printf("\033[32mOk\n\033[0m");
 }
 
 
 
 int main()
 {
+	check_isupper();
 
-	puts("### ft_isupper ##");
-	check_isupper('Z');
-	check_isupper('A');
-	check_isupper('z');
-	check_isupper(64);
-	check_isupper(91);
+	check_isLower();
 
-	puts("### ft_islower ##");
-	check_isLower('z');
-	check_isLower('a');
-	check_isLower('Z');
-	check_isLower(96);
-	check_isLower(123);
 
 	puts("### ft_puts ##");
 	check_puts("great succes !");
 	check_puts(0);
 
-	puts("### ft_isdigit ##");
-	check_isDigit('5');
-	check_isDigit('p');
-	check_isDigit('0');
-	check_isDigit('9');
+	check_isDigit();
 
-	puts("### ft_alpha ##");
-	check_isAlpha('A');
-	check_isAlpha('Z');
-	check_isAlpha('F');
-	check_isAlpha('{');
-	check_isAlpha(']');
-	check_isAlpha('a');
-	check_isAlpha('f');
-	check_isAlpha('z');
-	check_isAlpha('*');
+	check_isAlpha();
 
-	puts("### ft_alnum ##");
-	check_isAlnum('5');
-	check_isAlnum('p');
-	check_isAlnum('0');
-	check_isAlnum('9');
-	check_isAlnum('A');
-	check_isAlnum('Z');
-	check_isAlnum('F');
-	check_isAlnum('{');
-	check_isAlnum(']');
-	check_isAlnum('a');
-	check_isAlnum('f');
-	check_isAlnum('z');
-	check_isAlnum('*');
-	puts("### ft_alascii ##");
-	check_isAscii('5');
-	check_isAscii('p');
-	check_isAscii('0');
-	check_isAscii(150);
-	check_isAscii(-4);
-	check_isAscii(127);
-	check_isAscii(0);
-	check_isAscii('{');
-	check_isAscii(']');
-	check_isAscii('a');
-	check_isAscii('f');
-	check_isAscii('z');
-	check_isAscii('*');
-	puts("### ft_isprint ##");
-	check_isprint('5');
-	check_isprint('p');
-	check_isprint('0');
-	check_isprint(150);
-	check_isprint(-4);
-	check_isprint(127);
-	check_isprint(0);
-	check_isprint(32);
-	check_isprint(126);
-	check_isprint('{');
-	check_isprint(']');
-	check_isprint('a');
-	check_isprint('f');
-	check_isprint('z');
-	check_isprint('*');
-	puts("### ft_tolower ##");
-	check_tolower('9');
-	check_tolower('A');
-	check_tolower('Z');
-	check_tolower('F');
-	check_tolower('{');
-	check_tolower(']');
-	check_tolower('a');
-	check_tolower('z');
-	puts("### ft_toupper ##");
-	check_toupper('9');
-	check_toupper('A');
-	check_toupper('Z');
-	check_toupper('F');
-	check_toupper('{');
-	check_toupper(']');
-	check_toupper('a');
-	check_toupper('z');
+
+	check_isAlnum();
+
+	check_isAscii();
+
+	check_isprint();
+
+	check_tolower();
+
+	check_toupper();
+
 	int i = 0;
 	srand( 42 );
 
@@ -391,12 +417,11 @@ int main()
 	printf("\033[32mOk\n\033[0m");
 
 	printf( "--------\nTest ft_cat:\n" );
-	// ft_cat( 4 );
-	// ft_cat( 8 );
-	// ft_cat( -4 );
-	// ft_cat( 0 );
+	ft_cat( 4 );
+	ft_cat( 8 );
+	ft_cat( -4 );
+	ft_cat( open( "ft_bzero.s", O_RDONLY ) );
+	ft_cat( open( "/etc/shadow", O_RDONLY ) );
 	ft_cat( open( "Makefile", O_RDONLY ) );
-	// ft_cat( open( "ft_bzero.s", O_RDONLY ) );
-	// ft_cat( open( "/etc/shadow", O_RDONLY ) );
 	return 0;
 }
